@@ -51,7 +51,6 @@ public class Main {
 		AtomicInteger nowInUse = new AtomicInteger(0);
 		AtomicInteger maxInUse = new AtomicInteger(0);
 		Runnable task = () -> {
-			int[] stoarge = new int[1024];
 			nowInUse.incrementAndGet();
 			try {
 				Thread.sleep(10);
@@ -89,18 +88,18 @@ public class Main {
 			} catch (InterruptedException e) {
 			}
 		}
-		if(executorService!=null){
+		if (executorService != null) {
 			executorService.shutdown();
 		}
 		LocalDateTime end = LocalDateTime.now();
 		long seconds = Duration.between(start, end).getSeconds();
-		long nano = Duration.between(start, end).getNano();
-		System.out.printf("isVirtual: %s\tfinal: %ds | %d\tmaxInUse: %d\n", (isVirtual ? "Y" : "N"), seconds, nano, maxInUse.get());
+		long nano = Duration.between(start, end).getNano() / 1000;
+		System.out.printf("isVirtual: %s\tfinal: %ds|%d\tmaxInUse: %d\n", (isVirtual ? "Y" : "N"), seconds, nano, maxInUse.get());
 	}
 
 
 	public static enum ExecuteType {
-		THREAD(false), POOL_CACHED, POOL_FIXED, POOL_PER, POOL_SCHEDULED, POOL_SINGLE,POOL_SINGLE_SCHEDULED;
+		THREAD(false), POOL_CACHED, POOL_FIXED, POOL_PER, POOL_SCHEDULED, POOL_SINGLE, POOL_SINGLE_SCHEDULED;
 
 		// 核心线程数量
 		public int coreSize;

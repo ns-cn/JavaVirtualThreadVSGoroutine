@@ -47,7 +47,7 @@ var RootCmd = cobra.Command{
 			}
 		}
 		duration := time.Since(startTime) // 从开始到当前所消耗的时间
-		fmt.Printf("isVirtual: %s\tfinal: %.0fs | %d\tmaxInUse: %d\n", "Y", duration.Seconds(), duration.Nanoseconds(), maxInUse)
+		fmt.Printf("isVirtual: %s\tfinal: %.0fs|%d\tmaxInUse: %d\n", "Y", duration.Seconds(), duration.Nanoseconds()/1000, maxInUse)
 	},
 }
 

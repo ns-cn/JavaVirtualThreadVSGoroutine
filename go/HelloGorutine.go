@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func singleGoroutineTest() {
 
 	go func() {
 		fmt.Println("hello goroutine")

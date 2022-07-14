@@ -38,7 +38,6 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(LocalDateTime.now());
 		try {
 			run(false, threads, executeType);
 		} catch (Exception e) {
@@ -64,11 +63,6 @@ public class Main {
 			}
 			count.incrementAndGet();
 			nowInUse.decrementAndGet();
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				throw new RuntimeException(e);
-//			}
 		};
 		ExecutorService executorService = null;
 		if (executeType.isPool) {
